@@ -3,24 +3,39 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "bootstrap": "cdk bootstrap",
+    "bootstrap-production": "cdk bootstrap --context stage=production",
+    "bootstrap-staging": "cdk bootstrap --context stage=staging",
     "build": "next build",
+    "deploy": "cdk deploy",
+    "deploy-production": "cdk deploy --context stage=production",
+    "deploy-staging": "cdk deploy --context stage=staging",
+    "dev": "next dev",
+    "lint-fix": "pnpm linter-base-config --fix",
+    "lint-fix-all": "pnpm lint-fix .",
+    "linter-base-config": "eslint --ext=js,ts,jsx,tsx .",
+    "remove": "cdk destroy",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "next": "14.2.8",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.8"
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@aws-cdk/aws-amplify-alpha": "^2.155.0-alpha.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "aws-cdk-lib": "^2.155.0",
+    "constructs": "^10.3.0",
+    "dotenv": "^16.4.5",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.8",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.8"
+    "ts-node": "^10.9.2",
+    "typescript": "^5"
   }
 }
