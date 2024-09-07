@@ -1,6 +1,5 @@
 import { App } from '@aws-cdk/aws-amplify-alpha';
 import { aws_iam, CfnOutput, Stack, StackProps } from 'aws-cdk-lib';
-import { BuildSpec } from 'aws-cdk-lib/aws-codebuild';
 import {
   AwsCustomResource,
   AwsCustomResourcePolicy,
@@ -13,7 +12,6 @@ import {
   MAIN_BRANCH,
   mainBranchSettings,
 } from './settings/branchSettings';
-import { buildSettings } from './settings/buildSettings';
 import { environmentVariables } from './settings/environmentVariables';
 import { sourceCodeProvider } from './settings/sourceCodeProvider';
 
@@ -41,7 +39,6 @@ export class AmplifyStack extends Stack {
       role,
       sourceCodeProvider,
       environmentVariables,
-      buildSpec: BuildSpec.fromObjectToYaml(buildSettings),
       autoBranchCreation: branchPreviewConfiguration,
       autoBranchDeletion: true,
     });
